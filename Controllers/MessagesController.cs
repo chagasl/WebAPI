@@ -9,7 +9,7 @@ namespace WebAPI.Controllers
     public class MessagesController : ControllerBase
     {
         private static List<Message> _messages = new List<Message>();
-        private static int _nextId = 1;
+        //private static int _nextId = 1;
 
         // Endpoint para enviar mensagens
         [HttpPost("send")]
@@ -22,7 +22,7 @@ namespace WebAPI.Controllers
 
             var message = new Message
             {
-                Id = _nextId++,
+                //Id = _nextId++,
                 Content = content,
                 IsRead = false,
                 Timestamp = DateTime.Now
