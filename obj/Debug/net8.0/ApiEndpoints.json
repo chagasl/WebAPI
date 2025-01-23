@@ -1,28 +1,34 @@
 [
   {
     "ContainingType": "WebAPI.Controllers.MessagesController",
-    "Method": "SendMessage",
-    "RelativePath": "api/Messages",
-    "HttpMethod": "POST",
+    "Method": "GetMessages",
+    "RelativePath": "api/Messages/get",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "message",
-        "Type": "System.String",
-        "IsRequired": true
+        "Name": "limit",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
   },
   {
     "ContainingType": "WebAPI.Controllers.MessagesController",
-    "Method": "GetMessages",
-    "RelativePath": "api/Messages",
-    "HttpMethod": "GET",
+    "Method": "SendMessage",
+    "RelativePath": "api/Messages/send",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "content",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
