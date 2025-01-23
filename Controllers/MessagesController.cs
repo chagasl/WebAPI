@@ -29,7 +29,7 @@ namespace WebAPI.Controllers
             };
 
             _messages.Add(message);
-            return Ok(new { success = true, message = "Success" });
+            return Ok(new { success = true, message = "ok" });
         }
 
         // Endpoint para receber mensagens
