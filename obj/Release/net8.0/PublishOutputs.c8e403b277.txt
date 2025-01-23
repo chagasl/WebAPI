@@ -1,0 +1,11 @@
+C:\CHAGASL\DevOps\Projects\WebAPI\obj\Release\net8.0\PubTmp\Out\WebAPI.exe
+C:\CHAGASL\DevOps\Projects\WebAPI\obj\Release\net8.0\PubTmp\Out\appsettings.Development.json
+C:\CHAGASL\DevOps\Projects\WebAPI\obj\Release\net8.0\PubTmp\Out\appsettings.json
+C:\CHAGASL\DevOps\Projects\WebAPI\obj\Release\net8.0\PubTmp\Out\WebAPI.dll
+C:\CHAGASL\DevOps\Projects\WebAPI\obj\Release\net8.0\PubTmp\Out\WebAPI.deps.json
+C:\CHAGASL\DevOps\Projects\WebAPI\obj\Release\net8.0\PubTmp\Out\WebAPI.runtimeconfig.json
+C:\CHAGASL\DevOps\Projects\WebAPI\obj\Release\net8.0\PubTmp\Out\WebAPI.pdb
+C:\CHAGASL\DevOps\Projects\WebAPI\obj\Release\net8.0\PubTmp\Out\Microsoft.OpenApi.dll
+C:\CHAGASL\DevOps\Projects\WebAPI\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+C:\CHAGASL\DevOps\Projects\WebAPI\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\CHAGASL\DevOps\Projects\WebAPI\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
