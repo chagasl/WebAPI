@@ -7,27 +7,27 @@ namespace WebAPI.Controllers
     [Route("api/[controller]")]
     public class MessagesController : ControllerBase
     {
-        private static List<Message> _messages = new List<Message>();
+        private static List<Content> _messages = new List<Content>();
         //private static int _nextId = 1;
 
         // Endpoint para enviar mensagens
         [HttpPost("send")]
-        public IActionResult SendMessage([FromBody] string content)
+        public IActionResult SendMessage([FromBody] string messageContent)
         {
-            if (string.IsNullOrWhiteSpace(content))
+            if (string.IsNullOrWhiteSpace(messageContent))
             {
                 return BadRequest("Message content cannot be empty.");
             }
 
-            var message = new Message
+            var content = new Content
             {
                 //Id = _nextId++,
-                Content = content,
+                Message = messageContent,
                 IsRead = false,
                 Timestamp = DateTime.Now
             };
 
-            _messages.Add(message);
+            _messages.Add(content);
             return Ok(new { success = true, message = "ok" });
         }
 

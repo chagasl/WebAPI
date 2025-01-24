@@ -24,7 +24,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "content",
+        "Name": "messageContent",
         "Type": "System.String",
         "IsRequired": true
       }
