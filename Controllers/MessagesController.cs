@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Text.RegularExpressions;
 
 
 namespace WebAPI.Controllers
@@ -11,17 +12,22 @@ namespace WebAPI.Controllers
 
         // Endpoint para enviar mensagens
         [HttpPost("send")]
-        public IActionResult SendMessage([FromBody] string messageContent, Int32 id)
+        public IActionResult SendMessage([FromBody] string messageContent)
         {
             if (string.IsNullOrWhiteSpace(messageContent))
             {
                 return BadRequest("Message content cannot be empty.");
             }
 
+            var splitMessage = Regex.Split(messageContent, ",");
+
+            var leftMessage = string.Join(", ", splitMessage.Skip(2));
+
             var content = new Content
             {
-                Id = id,
-                Message = messageContent
+                Id = Convert.ToInt32(splitMessage[0]),
+                RequestCode = Convert.ToInt16(splitMessage[1]),
+                Message = leftMessage
             };
 
             _messages.Add(content);
@@ -32,10 +38,10 @@ namespace WebAPI.Controllers
         [HttpGet("get")]
         public IActionResult Get([FromQuery] Int32 id)
         {
-            var message = _messages.Where(m => m.Id == id);
+            var message = _messages.Where(m => m.Id == id).ToList();
 
             _messages.RemoveAll(m => m.Id == id);
-            
+
             return Ok(message);
         }
 
@@ -44,5 +50,7 @@ namespace WebAPI.Controllers
         {
             return Ok(new { status = "API is running" });
         }
+
+
     }
 }

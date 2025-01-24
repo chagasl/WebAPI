@@ -27,11 +27,6 @@
         "Name": "messageContent",
         "Type": "System.String",
         "IsRequired": true
-      },
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
