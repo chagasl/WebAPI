@@ -8,11 +8,10 @@ namespace WebAPI.Controllers
     public class MessagesController : ControllerBase
     {
         private static List<Content> _messages = new List<Content>();
-        //private static int _nextId = 1;
 
         // Endpoint para enviar mensagens
         [HttpPost("send")]
-        public IActionResult SendMessage([FromBody] string messageContent)
+        public IActionResult SendMessage([FromBody] string messageContent, Int32 id)
         {
             if (string.IsNullOrWhiteSpace(messageContent))
             {
@@ -21,10 +20,8 @@ namespace WebAPI.Controllers
 
             var content = new Content
             {
-                //Id = _nextId++,
-                Message = messageContent,
-                IsRead = false,
-                Timestamp = DateTime.Now
+                Id = id,
+                Message = messageContent
             };
 
             _messages.Add(content);
@@ -33,21 +30,13 @@ namespace WebAPI.Controllers
 
         // Endpoint para receber mensagens
         [HttpGet("get")]
-        public IActionResult GetMessages([FromQuery] int limit = 10)
+        public IActionResult Get([FromQuery] Int32 id)
         {
-            var unreadMessages = _messages
-                .Where(m => !m.IsRead)
-                .OrderBy(m => m.Timestamp)
-                .Take(limit)
-                .ToList();
+            var message = _messages.Where(m => m.Id == id);
 
-            // Marcar as mensagens como lidas
-            foreach (var message in unreadMessages)
-            {
-                message.IsRead = true;
-            }
-
-            return Ok(unreadMessages);
+            _messages.RemoveAll(m => m.Id == id);
+            
+            return Ok(message);
         }
 
         [HttpGet("status")]

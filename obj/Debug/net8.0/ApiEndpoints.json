@@ -1,14 +1,14 @@
 [
   {
     "ContainingType": "WebAPI.Controllers.MessagesController",
-    "Method": "GetMessages",
+    "Method": "Get",
     "RelativePath": "api/Messages/get",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "limit",
+        "Name": "id",
         "Type": "System.Int32",
         "IsRequired": false
       }
@@ -27,6 +27,11 @@
         "Name": "messageContent",
         "Type": "System.String",
         "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
