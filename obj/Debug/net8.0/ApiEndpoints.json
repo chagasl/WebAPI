@@ -1,8 +1,8 @@
 [
   {
     "ContainingType": "WebAPI.Controllers.MessagesController",
-    "Method": "Get",
-    "RelativePath": "api/Messages/get",
+    "Method": "GetDone",
+    "RelativePath": "api/Messages/getDone",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -17,14 +17,40 @@
   },
   {
     "ContainingType": "WebAPI.Controllers.MessagesController",
+    "Method": "GetRequests",
+    "RelativePath": "api/Messages/getRequests",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI.Controllers.MessagesController",
     "Method": "SendMessage",
-    "RelativePath": "api/Messages/send",
+    "RelativePath": "api/Messages/sendDone",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "messageContent",
+        "Name": "doneMessage",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebAPI.Controllers.MessagesController",
+    "Method": "SendRequest",
+    "RelativePath": "api/Messages/sendRequest",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestMessage",
         "Type": "System.String",
         "IsRequired": true
       }

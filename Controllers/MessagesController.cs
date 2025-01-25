@@ -21,7 +21,7 @@ namespace WebAPI.Controllers
 
             var splitMessage = Regex.Split(requestMessage, ",");
 
-            var leftMessage = string.Join(", ", splitMessage.Skip(2));
+            var leftMessage = string.Join(",", splitMessage.Skip(2));
 
             var content = new Content
             {
@@ -44,7 +44,7 @@ namespace WebAPI.Controllers
 
             var splitMessage = Regex.Split(doneMessage, ",");
 
-            var leftMessage = string.Join(", ", splitMessage.Skip(2));
+            var leftMessage = string.Join(",", splitMessage.Skip(2));
 
             var content = new Content
             {
