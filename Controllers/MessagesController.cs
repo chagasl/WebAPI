@@ -8,18 +8,18 @@ namespace WebAPI.Controllers
     [Route("api/[controller]")]
     public class MessagesController : ControllerBase
     {
-        private static List<Content> _messages = new List<Content>();
+        private static List<Content> _requests = new List<Content>();
+        private static List<Content> _done = new List<Content>();
 
-        // Endpoint para enviar mensagens
-        [HttpPost("send")]
-        public IActionResult SendMessage([FromBody] string messageContent)
+        [HttpPost("sendRequest")]
+        public IActionResult SendRequest([FromBody] string requestMessage)
         {
-            if (string.IsNullOrWhiteSpace(messageContent))
+            if (string.IsNullOrWhiteSpace(requestMessage))
             {
                 return BadRequest("Message content cannot be empty.");
             }
 
-            var splitMessage = Regex.Split(messageContent, ",");
+            var splitMessage = Regex.Split(requestMessage, ",");
 
             var leftMessage = string.Join(", ", splitMessage.Skip(2));
 
@@ -30,17 +30,49 @@ namespace WebAPI.Controllers
                 Message = leftMessage
             };
 
-            _messages.Add(content);
+            _requests.Add(content);
             return Ok(new { success = true, message = "ok" });
         }
 
-        // Endpoint para receber mensagens
-        [HttpGet("get")]
-        public IActionResult Get([FromQuery] Int32 id)
+        [HttpPost("sendDone")]
+        public IActionResult SendMessage([FromBody] string doneMessage)
         {
-            var message = _messages.Where(m => m.Id == id).ToList();
+            if (string.IsNullOrWhiteSpace(doneMessage))
+            {
+                return BadRequest("Message content cannot be empty.");
+            }
 
-            _messages.RemoveAll(m => m.Id == id);
+            var splitMessage = Regex.Split(doneMessage, ",");
+
+            var leftMessage = string.Join(", ", splitMessage.Skip(2));
+
+            var content = new Content
+            {
+                Id = Convert.ToInt32(splitMessage[0]),
+                RequestCode = Convert.ToInt16(splitMessage[1]),
+                Message = leftMessage
+            };
+
+            _done.Add(content);
+            return Ok(new { success = true, message = "ok" });
+        }
+
+        [HttpGet("getRequests")]
+        public IActionResult GetRequests()
+        {
+            var message = _requests.ToList();
+
+            _requests.Clear();
+
+            return Ok(message);
+        }
+
+        [HttpGet("getDone")]
+        public IActionResult GetDone([FromQuery] Int32 id)
+        {
+            var message = _done.Where(m => m.Id == id).ToList();
+
+            _done.RemoveAll(m => m.Id == id);
 
             return Ok(message);
         }
